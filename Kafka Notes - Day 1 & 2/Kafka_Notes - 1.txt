@@ -1,0 +1,81 @@
+1. Download Kafka and extract it.
+
+2. Set environment variable to bin\window for window users
+
+3. Run Zookeeper server
+C:\Softwares\kafka_2.13-3.5.1>zookeeper-server-start config\zookeeper.properties
+
+4. Start Kafka Server (Broker)
+c:\Softwares\kafka_2.13-3.5.1>kafka-server-start config\server.properties
+
+
+Zookeeper - 2181
+Kafka Server(Broker) - 9092
+
+
+5. Create Topic
+C:\Softwares\kafka_2.13-3.5.1>kafka-topics --bootstrap-server localhost:9092 --create --topic first-topic --partitions 1 --replication-factor 1
+
+To see list of topics
+kafka-topics --bootstrap-server localhost:9092 --list
+
+Describe details of a topic
+Isr - In-sync Replica -> each partition can have set of replicas known as Isr 
+
+kafka-topics --bootstrap-server localhost:9092 --describe --topic first-topic
+
+
+Producing and Consuming simple messages
+
+6. Start Producer
+C:\Softwares\kafka_2.13-3.5.1>kafka-console-producer --broker-list localhost:9092 --topic first-topic
+
+7. Start Consumer
+C:\Softwares\kafka_2.13-3.5.1>kafka-console-consumer --bootstrap-server localhost:9092 --topic first-topic
+
+
+Exercise - 
+Create new topic by name second-topic having 3 partitions and describe it.
+Create producer to send message and consumer to consume
+
+
+
+8. Download Offset Explorer 
+https://www.kafkatool.com/download.html
+
+acks= 0  fire & forget (possible data loss)
+acks= 1 will wait for acknowledgement  (limited data loss)
+acks= all will wait from leader and replicas - (no data loss)
+
+
+
+
+Cluster can have many brokers (servers) 
+Broker can have many topics
+Topic can have many partitions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

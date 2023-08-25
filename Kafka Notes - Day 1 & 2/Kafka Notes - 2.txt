@@ -1,0 +1,52 @@
+1. Start Zookeeper
+2. Start Kafka Server
+3. Producer
+4. Consumer
+5. Offset Explorer
+
+
+
+Using Spring Boot
+
+1. Applicatin 1 - Producing messages
+2. Applicatin 2 - Consuming messages
+
+
+							   push							   pull		
+Rest Client ----> MessageController ----> MessagePublisher ------> Kafka Cluster (Broker --> topic ---> partitions) -----> MessageSubscriber
+						9191				9092 						9292
+Postman
+React App
+
+
+
+http://localhost:9191/producer/publish/Greetings
+
+
+JSON 
+{
+"userId": 1011,
+"name" : "Ram",
+"location" : "Bengaluru"
+}
+
+
+JsonSerializer
+
+StringSerializer
+
+
+
+Caused by: java.lang.IllegalArgumentException: The class 'com.unext.model.User' is not in the trusted packages: [java.util, java.lang].
+Solution : 
+1. If you believe this class is safe to deserialize, 
+	please provide its name. 
+2. If the serialization is only done by a trusted source, 
+	you can also enable trust all (*).
+
+
+
+
+
+
+
